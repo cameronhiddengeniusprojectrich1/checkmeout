@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAIVI's Hobbies</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    /* Smooth fade-in for the whole page */
+    body {
+      opacity: 0;
+      transition: opacity 1.2s ease-in;
+      font-family: 'Poppins', sans-serif;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+
+    /* Navbar & Mode Toggle */
+    .navbar {
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    .mode-toggle {
+      border: none;
+      background: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: inherit;
+      transition: transform 0.3s ease;
+    }
+    .mode-toggle:hover {
+      transform: rotate(20deg);
+    }
+
+    /* Card styling */
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .image-container {
+      height: 200px;
+      overflow: hidden;
+    }
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .image-container img {
+      transform: scale(1.1);
+    }
+
+    /* Light & Dark mode colors */
+    body.light-mode {
+      background-color: #f9f9f9;
+      color: #212529;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+    .dark-mode .navbar {
+      background-color: #1e1e1e !important;
+    }
+    .dark-mode .card {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+    .dark-mode .btn-primary {
+      background-color: #0d6efd;
+    }
+
+    /* Fade-in effect for cards */
+    .card {
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== FOOTER TICKER ===== */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #343a40;
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 999;
+      font-size: 1rem;
+    }
+
+    .ticker {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scrollTicker 20s linear infinite;
+    }
+
+    @keyframes scrollTicker {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Light/Dark adjustments for ticker */
+    .light-mode footer {
+      background-color: #212529;
+      color: #f9f9f9;
+    }
+    .dark-mode footer {
+      background-color: #0d6efd;
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body class="light-mode">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+    <a class="navbar-brand" href="#">
+      <img src="images/IMG_4504.jpg" alt="MyBrand Logo" width="40" height="40" class="d-inline-block align-text-top"/>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="goals.html">Goals</a></li>
+        <li class="nav-item"><a class="nav-link" href="content.html">Content</a></li>
+        <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+      </ul>
+      <!-- Light/Dark Mode Toggle -->
+      <button id="modeToggle" class="mode-toggle" title="Toggle Light/Dark Mode">🌗</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="text-center text-black py-5" style="background-color: rgb(161, 161, 161);">
+    <h1>CAIVI's Hobbies</h1>
+    <p>Welcome to my page about me!</p>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myModal">
+      Learn More
+    </button>
+  </div>
+
+  <!-- Cards Section -->
+  <div class="container my-5">
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="image-container">
+            <img src="images/hobby1.jpg" alt="Hobby 1">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Sports 🏀🏈⚾️</h5>
+            <p class="card-text">I grew up with a deep passion for sports, playing multiple throughout my youth. I played basketball, baseball, and football. Now I watch them and love to talk about analytics all the time with friends. Maybe you can use some help with your fantasy football team? Looks like it haha </p>
+            <a href="#" class="btn btn-primary">Coming Soon</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="image-container">
+            <img src="images/hobby2.jpg" alt="Hobby 2">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Music 🎶</h5>
+            <p class="card-text">Hip-Hop and R&B are my favorites. I also enjoy deep house and some alternative music. I love 90s & 2000s music, but Jazz Rap has been my favorite genre the last couple of years! 🐰🍊 Maybe you can guess my two favorite artists from the emojis? I love discovering new artists, albums, and songs. I want to start DJing at some point!</p>
+            <a href="#" class="btn btn-primary">Coming Soon</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="image-container">
+            <img src="images/hobby3.jpg" alt="Hobby 3">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Gaming 🎮</h5>
+            <p class="card-text">It all started with the Gamecube. Then a DS, PSP, Xbox 360, Xbox One, and finally years later I got a PS5. I love exploring RPGs and open worlds, solving puzzles, and competing online with friends. My favorite games of all time are Modern Warfare 2 (2009), 2K15, Halo Series, Assassin's Creed Series, Skyrim, College Football, MLB the Show, Madden, and many others.</p>
+            <a href="#" class="btn btn-primary">Coming Soon</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="image-container">
+            <img src="images/" alt="Hobby 4">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Traveling 🌎</h5>
+            <p class="card-text">I have a lot of places I want to see someday! In 2025 I was lucky enough to travel to Miami, Chicago, and New York City. Some places I want to see are Japan, Brazil, Egypt, Mexico City, Thailand, and Europe. I am pretty open to traveling to most places!  </p>
+            <a href="#" class="btn btn-primary">Coming Soon</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="image-container">
+            <img src="images/" alt="Hobby 5">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Coming Soon</h5>
+            <p class="card-text">...</p>
+            <a href="#" class="btn btn-primary">Coming Soon</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="image-container">
+            <img src="images/" alt="Hobby 6">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Coming Soon</h5>
+            <p class="card-text">...</p>
+            <a href="#" class="btn btn-primary">Coming Soon</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">More About Me</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>I'm passionate about self-growth, helping your communities, all while still having fun in this one life we blessed with!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Animated Footer Ticker -->
+    <footer>
+        <div class="ticker">
+          Warriors beat Lakers 111-103 🏀 <!-- NBA news-->
+          UCLA upsets #7 Penn State 🏈  <!-- NCAA news-->
+          Jags beat Chiefs 31-28 on MNF! <!-- NFL news-->
+          Dodgers take Games 1 & 2 in Philly!  <!-- MLB news-->
+          ⚾️ Always learning. 🚀 Connect with me anytime! 💬
+        </div>
+    </footer>
+
+  <!-- Script -->
+  <script>
+    // Fade in body
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+
+    // Light/Dark mode toggle
+    const toggleBtn = document.getElementById('modeToggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+    });
+  </script>
+</body>
+</html>

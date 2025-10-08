@@ -1,0 +1,15 @@
+
+/* Image size for cards */
+.card-img-top {
+    object-fit: cover;
+
+}
+
+.navbar {
+    text-align: left;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
