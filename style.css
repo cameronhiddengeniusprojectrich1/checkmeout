@@ -1,8 +1,7 @@
 
-/* Image size for cards */
+/* Global Styles */
 .card-img-top {
     object-fit: cover;
-
 }
 
 .navbar {
@@ -13,3 +12,14 @@
     text-align: center;
 }
 
+/* YouTube Playlist Styling - Enhanced */
+.ratio iframe {
+    border: 3px solid #6c63ff;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ratio iframe:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(108, 99, 255, 0.6);
+}

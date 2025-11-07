@@ -15,17 +15,57 @@
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #4b4c4d;
+      color: #fff;
     }
     h1, h2 {
       font-family: 'Orbitron', sans-serif;
       text-transform: uppercase;
       letter-spacing: 2px;
     }
-    .image-container {
-      height: 200px;
-      overflow: hidden;
-      object-fit: cover;
+
+    /* Navbar */
+    .navbar {
+      background-color: #fff;
     }
+
+    /* Tracklist styling */
+    .tracklist {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .tracklist li {
+      list-style: none;
+      padding: 15px;
+      margin: 10px 0;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: background 0.3s;
+      color: #000;
+    }
+    .tracklist li:hover {
+      background: #e9ecef;
+    }
+    .tracklist li i {
+      color: #0d6efd;
+      margin-right: 10px;
+    }
+    .track-title {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+    }
+    audio {
+      width: 100%;
+      margin-top: 10px;
+      outline: none;
+      border-radius: 5px;
+    }
+
     /* Gallery Carousel Styling */
     .gallery-carousel {
       position: relative;
@@ -35,17 +75,14 @@
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
-    
     .gallery-slide {
       display: none;
       position: relative;
     }
-    
     .gallery-slide.active {
       display: block;
       animation: fadeIn 1s ease-in-out;
     }
-    
     .gallery-slide img {
       width: 100%;
       height: auto;
@@ -53,11 +90,9 @@
       object-fit: contain;
       transition: transform 3s ease;
     }
-    
     .gallery-slide:hover img {
       transform: scale(1.02);
     }
-    
     .gallery-caption {
       position: absolute;
       bottom: 0;
@@ -68,12 +103,6 @@
       padding: 20px;
       text-align: center;
     }
-    
-    .gallery-caption h4 {
-      margin: 0 0 5px 0;
-      font-size: 1.2rem;
-    }
-    
     .gallery-indicators {
       position: absolute;
       bottom: 15px;
@@ -83,7 +112,6 @@
       gap: 8px;
       z-index: 10;
     }
-    
     .gallery-indicator {
       width: 10px;
       height: 10px;
@@ -92,17 +120,15 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    
     .gallery-indicator.active {
       background: white;
       transform: scale(1.3);
     }
-    
     .gallery-controls {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
+      background: rgba(219, 219, 219, 0.623);
       color: white;
       border: none;
       width: 40px;
@@ -116,49 +142,17 @@
       transition: all 3s ease;
       z-index: 10;
     }
-    
     .gallery-controls:hover {
       background: rgba(0,0,0,0.8);
       transform: translateY(-50%) scale(1.1);
     }
-    
-    .gallery-prev {
-      left: 15px;
-    }
-    
-    .gallery-next {
-      right: 15px;
-    }
-    
+    .gallery-prev { left: 15px; }
+    .gallery-next { right: 15px; }
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
 
-    /* Tracklist styling */
-    .tracklist {
-    max-width: 650px;   /* limit how wide the list can be */
-    margin: 0 auto;     /* center the list in the container */
-    padding: 0;         /* remove default UL padding */
-    }
-    .tracklist li {
-      list-style: none;
-      padding: 12px;
-      margin: 8px 0;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      transition: background 0.3s;
-    }
-    .tracklist li:hover {
-      background: #e9ecef;
-    }
-    .tracklist li i {
-      color: #0d6efd;
-      margin-right: 10px;
-    }
     /* Article section */
     .article-section {
       background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -168,17 +162,240 @@
       margin-top: 40px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
+
+    /* YouTube Playlist Section */
+    .youtube-playlist {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      border-radius: 15px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .youtube-playlist::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .playlist-header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .playlist-header h2 {
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
+
+    .playlist-header p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1em;
+      margin: 0;
+    }
+
+    .youtube-video-container {
+      position: relative;
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .youtube-video-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .video-info {
+      padding: 15px 0 0 0;
+      text-align: center;
+    }
+
+    .video-title {
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1.1em;
+    }
+
+    .video-description {
+      color: #666;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+
+    /* Featured Playlist Container */
+    .featured-playlist-container {
+      max-width: 900px;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+
+    .featured-video-wrapper {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .featured-video-wrapper:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .playlist-info {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .playlist-title {
+      font-size: 1.4em;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .playlist-title i {
+      color: #ff4757;
+      font-size: 1.2em;
+    }
+
+    .playlist-stats {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .playlist-stats span {
+      color: #666;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .playlist-stats i {
+      color: #ff4757;
+    }
+
+    .playlist-description {
+      color: #555;
+      line-height: 1.6;
+      font-size: 1em;
+    }
+
+    .playlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .playlist-cta {
+      text-align: center;
+      margin-top: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .playlist-btn {
+      background: linear-gradient(45deg, #ff4757, #ff3838);
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .playlist-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .playlist-grid {
+        grid-template-columns: 1fr;
+      }
+      .youtube-playlist {
+        padding: 30px 20px;
+      }
+      .featured-video-wrapper {
+        padding: 20px;
+      }
+      .playlist-stats {
+        gap: 15px;
+        justify-content: center;
+      }
+      .playlist-title {
+        font-size: 1.2em;
+        text-align: center;
+      }
+      .playlist-description {
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
   
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="images/IMG_4504.jpg" alt="MyBrand Logo" width="40" height="40" class="d-inline-block align-text-top rounded-circle">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -205,16 +422,76 @@
   <div class="container my-5">
     <h2 class="text-center mb-4">🎶 Tracklist</h2>
     <ul class="tracklist">
-      <li><i class="fas fa-music"></i> Track 1 – How Much is Weed?</li>
-      <li><i class="fas fa-music"></i> Track 2 – Killing Me</li>
-      <li><i class="fas fa-music"></i> Track 3 – Are You Looking Up</li>
-      <li><i class="fas fa-music"></i> Track 4 – Oh Jenny!</li>
-      <li><i class="fas fa-music"></i> Track 5 – Peach</li>
-      <li><i class="fas fa-music"></i> Track 6 – Vertigo</li>
-      <li><i class="fas fa-music"></i> Track 7 – Hey</li>
-      <li><i class="fas fa-music"></i> Track 8 – The Most Beautiful Thing</li>
-      <li><i class="fas fa-music"></i> Track 9 – Kissing In Swimming Pools</li>
-      <li><i class="fas fa-music"></i> Track 10 – It's All You Know</li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 1 – How Much is Weed?</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_1-HowMuchIsWeed.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 2 – Killing Me</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_2-KillingMe.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 3 – Are You Looking Up</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_3-AreYouLookingUp.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 4 – Oh Jenny!</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_4-OhJenny.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 5 – Peach</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_5-Peach.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 6 – Vertigo</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_6-Vertigo.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 7 – Hey</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_7-Hey.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 8 – The Most Beautiful Thing</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_8-TheMostBeautifulThing.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 9 – Kissing In Swimming Pools</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_9-KissingInSwimmingPools.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
+      <li>
+        <div class="track-title"><i class="fas fa-music"></i> Track 10 – It's All You Know</div>
+        <audio controls>
+          <source src="SANDBOX_2TRACKS/DMA499_10-ItsAllYouKnow.MASTER.wav" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </li>
     </ul>
   </div>
 
@@ -222,37 +499,25 @@
   <div class="container my-5">
     <h2 class="text-center mb-4">📸 Gallery</h2>
     <div class="gallery-carousel">
-      <!-- Slide 1 -->
       <div class="gallery-slide active">
         <img src="images/IMG_0006.JPG" alt="Gallery Image 1">
       </div>
-
-      <!-- Slide 2 -->
       <div class="gallery-slide">
         <img src="images/IMG_0032.JPG" alt="Gallery Image 2">
       </div>
-
-      <!-- Slide 3 -->
       <div class="gallery-slide">
         <img src="images/IMG_0258.JPG" alt="Gallery Image 3">
       </div>
-
-      <!-- Slide 4 -->
       <div class="gallery-slide">
         <img src="images/IMG_0235.JPG" alt="Gallery Image 4">
       </div>
-
-      <!-- Slide 5 -->
       <div class="gallery-slide">
         <img src="images/IMG_0361.JPG" alt="Gallery Image 5">
       </div>
-
-      <!-- Slide 6 -->
       <div class="gallery-slide">
         <img src="images/IMG_4893.jpg" alt="Gallery Image 6">
       </div>
 
-      <!-- Navigation Controls -->
       <button class="gallery-controls gallery-prev" onclick="changeSlide(-1)">
         <i class="fas fa-chevron-left"></i>
       </button>
@@ -260,7 +525,6 @@
         <i class="fas fa-chevron-right"></i>
       </button>
 
-      <!-- Indicators -->
       <div class="gallery-indicators">
         <span class="gallery-indicator active" onclick="currentSlide(1)"></span>
         <span class="gallery-indicator" onclick="currentSlide(2)"></span>
@@ -268,6 +532,51 @@
         <span class="gallery-indicator" onclick="currentSlide(4)"></span>
         <span class="gallery-indicator" onclick="currentSlide(5)"></span>
         <span class="gallery-indicator" onclick="currentSlide(6)"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube Playlist Section -->
+  <div class="container">
+    <div class="youtube-playlist">
+      <div class="playlist-header">
+        <h2><i class="fab fa-youtube"></i> Official Music Videos</h2>
+        <p>Watch our official music videos and behind-the-scenes content</p>
+      </div>
+      
+      <!-- Featured Video from Playlist -->
+      <div class="featured-playlist-container">
+        <div class="featured-video-wrapper">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/s0ZGZUr5D20?si=nMCM0g6YOpG5_RJx" 
+                    title="SongSmith Records - Featured Video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <div class="playlist-info">
+            <div class="playlist-title">
+              <i class="fas fa-play-circle"></i>
+              SongSmith Records - Complete Album Playlist
+            </div>
+            <div class="playlist-stats">
+              <span><i class="fas fa-music"></i> 10 Songs</span>
+              <span><i class="fas fa-clock"></i> ~35 Minutes</span>
+              <span><i class="fas fa-calendar"></i> 2024 Release</span>
+            </div>
+            <div class="playlist-description">
+              Experience our complete album journey - from the energetic opening track to the emotional finale. 
+              This playlist captures the essence of our one-month recording challenge.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="playlist-cta">
+        <a href="https://youtube.com/playlist?list=PLdXaXgs222puSvXcYaz3JlSeX4LWMz2ji&si=qqH7MM7ha-6ATWuY" target="_blank" class="playlist-btn">
+          <i class="fab fa-youtube"></i> Watch Full Playlist
+        </a>
       </div>
     </div>
   </div>
@@ -283,18 +592,16 @@
       </p>
       <h3>Meet the Members</h3>
       <p>
-        Luan Ho - Engineer, Atlanta, GA
-        <br>
-        Mateo Baxley - Engineer, Los Angeles, CA
-        <br>
-        Cameron Leonard - Engineer, Los Angeles, CA
-        <br>
-        Andrew Martinez - Engineer, Los Angeles, CA
-        <br>
+        Luan Ho - Engineer, Atlanta, GA <br>
+        Mateo Baxley - Engineer, Los Angeles, CA <br>
+        Cameron Leonard - Engineer/Coder, Los Angeles, CA <br>
+        Andrew Martinez - Engineer, Los Angeles, CA <br>
         LOUISPHOENIX - Artist, Chino Hills, CA
       </p>
     </div>
   </div>
+
+  
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -315,21 +622,16 @@
   </div>
 
   <script>
-    // Gallery Carousel JavaScript
+    // Gallery Carousel Script
     let currentSlideIndex = 0;
     const slides = document.querySelectorAll('.gallery-slide');
     const indicators = document.querySelectorAll('.gallery-indicator');
     const totalSlides = slides.length;
-
-    // Auto-rotate every 5 seconds
     let autoRotateInterval = setInterval(nextSlide, 5000);
 
     function showSlide(index) {
-      // Hide all slides
       slides.forEach(slide => slide.classList.remove('active'));
       indicators.forEach(indicator => indicator.classList.remove('active'));
-      
-      // Show current slide
       slides[index].classList.add('active');
       indicators[index].classList.add('active');
     }
@@ -346,12 +648,7 @@
 
     function changeSlide(direction) {
       clearInterval(autoRotateInterval);
-      if (direction === 1) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
-      // Restart auto-rotation
+      direction === 1 ? nextSlide() : prevSlide();
       autoRotateInterval = setInterval(nextSlide, 5000);
     }
 
@@ -359,21 +656,13 @@
       clearInterval(autoRotateInterval);
       currentSlideIndex = index - 1;
       showSlide(currentSlideIndex);
-      // Restart auto-rotation
       autoRotateInterval = setInterval(nextSlide, 5000);
     }
 
-    // Pause auto-rotation on hover
     const carousel = document.querySelector('.gallery-carousel');
-    carousel.addEventListener('mouseenter', () => {
-      clearInterval(autoRotateInterval);
-    });
+    carousel.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
+    carousel.addEventListener('mouseleave', () => autoRotateInterval = setInterval(nextSlide, 5000));
 
-    carousel.addEventListener('mouseleave', () => {
-      autoRotateInterval = setInterval(nextSlide, 5000);
-    });
-
-    // Initialize carousel
     showSlide(0);
   </script>
 
